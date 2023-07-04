@@ -1,0 +1,39 @@
+version: '3'
+services:
+  vote-app:
+    build:
+      context: /root/voting-app/vote
+      dockerfile: Dockerfile
+    image: vote:1.0
+    container_name: vote-app
+    ports:
+      - 5000:80
+  
+  result-app:
+    build:
+      context: /root/voting-app/result
+      dockerfile: Dockerfile
+    image: result:1.0
+    container_name: result-app
+    ports:
+      - 5001:80
+
+  worker-app:
+    build:
+      context: /root/voting-app/worker
+      dockerfile: Dockerfile
+    image: worker:1.0
+    container_name: wroker-app
+  
+  redis:
+    image: redis
+    container_name: redis
+
+  postgres:
+    image: postgres:9.4
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      
+  
