@@ -10,8 +10,7 @@ pipeline{
             steps{
                 #dockerhub credetials
                 withCredentials([usernameColonPassword(credentialsId: 'Dockerhub', variable: 'DockerPasswd')]) {
-    // some block
-}
+                
                 sh "docker login -u yakhub4881 -p ${DockerPasswd}"
 
                 #build vote image
@@ -22,6 +21,7 @@ pipeline{
                 
                 #pudh image to dockerhub
                 sh "docker push yakhub4881:$JOB_NAME-vote:V1.$BUILD_I"
+}
             }
         }
         
