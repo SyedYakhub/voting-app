@@ -8,18 +8,18 @@ pipeline{
         }
         stage ('build and push images to dockerhub'){
             steps{
-                #dockerhub credetials
+                //dockerhub credetials
                 withCredentials([usernameColonPassword(credentialsId: 'Dockerhub', variable: 'DockerPasswd')]) {
                 
                 sh "docker login -u yakhub4881 -p ${DockerPasswd}"
 
-                #build vote image
+                //build vote image
                 sh "docker build -t $JOB_NAME-vote:V1.$BUILD_ID -f voting-app/vote/Dcokerfile"
 
-                #tag image
+                //tag image
                 sh "docker tag $JOB_NAME-vote:V1.$BUILD_ID yakhub4881:$JOB_NAME-vote:V1.$BUILD_ID"
                 
-                #pudh image to dockerhub
+                //pudh image to dockerhub
                 sh "docker push yakhub4881:$JOB_NAME-vote:V1.$BUILD_I"
 }
             }
