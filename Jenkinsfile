@@ -9,7 +9,7 @@ pipeline{
         stage ('build and push images to dockerhub'){
             steps{
                 //dockerhub credetials
-                withCredentials([usernameColonPassword(credentialsId: 'Dockerhub', variable: 'DockerPasswd')]) {
+                withCredentials([usernameColonPassword(credentialsId: 'DockerPasswd', variable: 'DockerPasswd')]) {
                 
                 sh "docker login -u yakhub4881 -p ${DockerPasswd}"
 
