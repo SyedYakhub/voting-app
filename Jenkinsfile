@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        BUILDPLATFORM = 'linux/amd64'
+        TARGETPLATFORM = 'linux/amd64'
     stages{
         stage ('git repository checkout') {
             steps{
