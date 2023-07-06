@@ -6,9 +6,7 @@
 # to build for a different platform than your host, use --platform=<platform>
 # for example, if you were on Intel (amd64) and wanted to build for ARM, you would use:
 # docker buildx build --platform "linux/arm64/v8" .
-# build image
-# build image
-FROM mcr.microsoft.com/dotnet/sdk:7.0 as build
+FROM --platform=${BUILDPLATFORM} mcr.microsoft.com/dotnet/sdk:7.0 as build
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
@@ -24,7 +22,7 @@ RUN case ${TARGETPLATFORM} in \
     && dotnet restore -r linux-${ARCH}
 
 COPY . .
-RUN case ${TARGETPLATFORM} in \
+RUN  case ${TARGETPLATFORM} in \
          "linux/amd64")  ARCH=x64  ;; \
          "linux/arm64")  ARCH=arm64  ;; \
          "linux/arm64/v8")  ARCH=arm64  ;; \
@@ -36,3 +34,4 @@ RUN case ${TARGETPLATFORM} in \
 FROM mcr.microsoft.com/dotnet/runtime:7.0
 WORKDIR /app
 COPY --from=build /app .
+ENTRYPOINT ["dotnet", "Worker.dll"]
