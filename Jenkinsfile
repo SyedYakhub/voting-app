@@ -34,7 +34,7 @@ pipeline{
                 sh "docker build -t $JOB_NAME-worker:v1.$BUILD_ID voting-app/worker"
 
                 //tag worker image
-                sh "docker tag $JOB_NAME-worker:v1.$BUILD_ID yakhub4881/$JOB_NAME-worker:v1.$BUILD_ID"
+                sh "docker build --build-arg TARGETPLATFORM=linux/amd64 -t $JOB_NAME-worker:v1.$BUILD_ID voting-app/worker"
 
                 //push docker image
                 sh "docker push yakhub4881/$JOB_NAME-worker:v1.$BUILD_ID "
