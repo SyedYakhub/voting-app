@@ -5,7 +5,7 @@ pipeline{
             steps{
                 
                 //remove previously added repo
-                sh 'cd /var/lib/jenkins/workspace && rm -rf voting-app*'
+                sh 'rm -rf /var/lib/jenkins/workspace/voting-app*'
 
                 //repository checkout
                 sh 'git clone https://github.com/SyedYakhub/voting-app.git'
