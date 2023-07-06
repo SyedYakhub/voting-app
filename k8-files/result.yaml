@@ -13,7 +13,7 @@ spec:
         app: result-app
     spec:
       containers:
-      - image: yakhub4881/result
+      - image: yakhub4881/result:1.0
         name: result-container
         ports:
           - containerPort: 80

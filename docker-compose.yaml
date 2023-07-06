@@ -1,19 +1,19 @@
 version: '3'
 services:
   vote-app:
-    image: yakhub4881/voting
+    image: yakhub4881/voting:1.0
     container_name: vote-app
     ports:
       - 5000:80
   
   result-app:
-    image: yakhub4881/result
+    image: yakhub4881/result:1.0
     container_name: result-app
     ports:
       - 5001:80
 
   worker-app:
-    image: yakhub4881/worker
+    image: yakhub4881/worker:1.0
     container_name: wroker-app
   
   redis:
