@@ -1,14 +1,15 @@
 pipeline{
     agent any
     stages{
-        stage ('remove previously added repo'){
-            steps{
-                sh 'cd /var/lib/jenkins/workspace && rm -rf voting-app*'
-            }
-        }
         stage ('git repository checkout') {
             steps{
+                
+                //remove previously added repo
+                //sh 'cd /var/lib/jenkins/workspace && rm -rf voting-app*'
+
+                //repository checkout
                 sh 'git clone https://github.com/SyedYakhub/voting-app.git'
+
             }
         }
         stage ('build and push images to dockerhub'){
