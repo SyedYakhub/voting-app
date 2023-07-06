@@ -37,7 +37,6 @@ pipeline{
                 fi
                 '''
 
-
                 
                 //voter
                 //build vote image
