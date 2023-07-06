@@ -24,8 +24,8 @@ pipeline{
                 sh "docker login -u yakhub4881 -p ${DockerPasswd}"
 
                 //remove exisiting docker images
-                //sh "docker rmi -f \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '$JOB_NAME-vote')"
-                //sh "docker rmi -f \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'yakhub4881/$JOB_NAME-vote')"
+                sh "docker rmi -f \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '$JOB_NAME-vote')"
+                sh "docker rmi -f \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'yakhub4881/$JOB_NAME-vote')"
 
                 
                 //voter
