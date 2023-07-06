@@ -6,10 +6,12 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      name: result-app
+      app: result-app
   template:
     metadata:
-      name: result-app
+      name: result-app-pod
+      labels:
+        app: result-app
     spec:
       containers:
       - image: kodekloud/examplevotingapp_result
@@ -30,4 +32,4 @@ spec:
     targetPort: 80
     nodePort: 31000
   selector:
-    name: result-app
+    app: result-app

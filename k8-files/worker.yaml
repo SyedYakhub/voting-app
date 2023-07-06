@@ -9,7 +9,9 @@ spec:
     replicas: 2
   template:
     metadata:
-      name: worker-app
+      name: worker-app-pod
+      labels:
+        app: worker-app
     spec:
       containers:
         - image: kodekloud/examplevotingapp_worker

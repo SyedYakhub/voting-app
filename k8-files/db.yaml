@@ -8,6 +8,10 @@ spec:
     matchLabels:
       name: db-app
   template:
+    metadata:
+      name: db-app-pod
+      labels:
+        app: db-app
     spec:
       containers:
       - image: postgres:9.4
