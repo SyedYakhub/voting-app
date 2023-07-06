@@ -13,5 +13,5 @@ spec:
         app: worker-app
     spec:
       containers:
-        - image: kodekloud/examplevotingapp_worker
+        - image: yakhub4881/worker
           name: worker-container

@@ -13,7 +13,7 @@ spec:
           app: vote-app
     spec:
       containers:
-      - image: kodekloud/examplevotingapp_vote
+      - image: yakhub4881/voting
         name: vote-container
         ports:
         - containerPort: 80

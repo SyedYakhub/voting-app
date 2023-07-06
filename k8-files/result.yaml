@@ -13,7 +13,7 @@ spec:
         app: result-app
     spec:
       containers:
-      - image: kodekloud/examplevotingapp_result
+      - image: yakhub4881/result
         name: result-container
         ports:
           - containerPort: 80
