@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage ('remove previously added repo'){
             steps{
-                sh 'rm -rf voting-app*'
+                sh 'cd /var/lib/jenkins/workspace && rm -rf voting-app*'
             }
         }
         stage ('git repository checkout') {
