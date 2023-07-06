@@ -3,10 +3,9 @@ kind: Deployment
 metadata:
   name: db-deployment
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      name: db-app
+      app: db-app
   template:
     metadata:
       name: db-app-pod
@@ -35,6 +34,6 @@ spec:
     - port: 5432
       targetport: 5432
   selector:
-    name: db-app
+    app: db-app
     
     
