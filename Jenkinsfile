@@ -31,7 +31,7 @@ pipeline{
                 
                 //worker
                 //build worker image
-                sh "docker build -t $JOB_NAME-worker:v1.$BUILD_ID voting-app/worker"
+                sh "docker build --build-arg BUILDPLATFORM=linux/amd64 -t $JOB_NAME-worker:v1.$BUILD_ID voting-app/worker"
 
                 //tag worker image
                 sh "docker tag $JOB_NAME-worker:v1.$BUILD_ID yakhub4881/$JOB_NAME-worker:v1.$BUILD_ID"
