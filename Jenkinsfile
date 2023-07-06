@@ -9,10 +9,12 @@ pipeline{
             steps{
                 
                 //remove previously added repo
+                sh '''
                 if [ -d "/var/lib/jenkins/workspace/voting-app" ]
                 then
-                sh 'rm -rf /var/lib/jenkins/workspace/voting-app*'
+                rm -rf /var/lib/jenkins/workspace/voting-app*
                 fi
+                '''
 
                 //repository checkout
                 sh 'git clone https://github.com/SyedYakhub/voting-app.git'
@@ -27,11 +29,14 @@ pipeline{
                 sh "docker login -u yakhub4881 -p ${DockerPasswd}"
 
                 //remove exisiting docker images
+                sh '''
                 if [ -n "$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'yakhub4881/$JOB_NAME-vote')" ] || [ -n "$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'yakhub4881/$JOB_NAME-vote')" ]
                 then
-                sh "docker rmi -f \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '$JOB_NAME-vote')"
-                sh "docker rmi -f \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'yakhub4881/$JOB_NAME-vote')"
+                docker rmi -f $(docker images --format '{{.Repository}}:{{.Tag}}' | grep '$JOB_NAME-vote')
+                docker rmi -f $(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'yakhub4881/$JOB_NAME-vote')
                 fi
+                '''
+
 
                 
                 //voter
