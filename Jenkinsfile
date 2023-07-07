@@ -6,7 +6,7 @@ pipeline{
             
                 //repository checkout
                 sshagent(['ec2-user']) {
-                sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 git clone https://github.com/SyedYakhub/voting-app.git /root'
+                sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 git clone https://github.com/SyedYakhub/voting-app.git /root/git'
                 }
             }
         }
