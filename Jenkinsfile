@@ -12,7 +12,7 @@ pipeline{
         }
         stage ('deploy docker compose file'){
             steps{
-                sh 'docker-compose up -d /root/git'
+                sh 'docker-compose -f /root/git/docker-compose.yaml up -d'
             }
         }
 
