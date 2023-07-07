@@ -12,7 +12,9 @@ pipeline{
         }
         stage ('deploy docker compose file'){
             steps{
+                sshagent(['ec2-user']) {
                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
+                }
             }
         }
 
