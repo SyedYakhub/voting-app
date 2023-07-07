@@ -4,10 +4,15 @@ pipeline{
         stage ('git repository checkout') {
             steps{
             
-                //repository checkout
+                //repository checkout on remote server
                 sshagent(['ec2-user']) {
                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 sudo git clone https://github.com/SyedYakhub/voting-app.git /root/git'
                 }
+            }
+        }
+        stage ('deploy docker compose file'){
+            steps{
+                sh 'docker-compose up -d /root/git'
             }
         }
 
