@@ -6,7 +6,7 @@ pipeline{
             
                 //repository checkout on remote server
                 sshagent(['root']) {
-                sh 'ssh -o StrictHostKeyChecking=no root@192.5.101.8 sudo git clone https://github.com/SyedYakhub/voting-app.git /root/git'
+                sh 'ssh -o StrictHostKeyChecking=no root@192.1.159.6 sudo git clone https://github.com/SyedYakhub/voting-app.git /root/git'
                 }
             }
         }
