@@ -5,18 +5,20 @@ pipeline{
             steps{
             
                 //repository checkout on remote server
-                sshagent(['ec2-user']) {
-                sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 sudo git clone https://github.com/SyedYakhub/voting-app.git /root/git'
+                sshagent(['root']) {
+                sh 'ssh -o StrictHostKeyChecking=no root@192.5.101.8 sudo git clone https://github.com/SyedYakhub/voting-app.git /root/git'
                 }
             }
         }
-        stage ('deploy docker compose file'){
-            steps{
-                sshagent(['ec2-user']) {
-                sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
-                }
-            }
-        }
+        // stage ('deploy docker compose file'){
+        //     steps{
+
+        //         //Deploying on remote server
+        //         sshagent(['root']) {
+        //         sh 'ssh -o StrictHostKeyChecking=no root@192.5.101.8 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
+        //         }
+        //     }
+        // }
 
         }
         
@@ -26,9 +28,15 @@ pipeline{
 
 
 
+//  stage ('deploy docker compose file'){
+//             steps{
 
-
-
+//                 //Deploying on remote server
+//                 sshagent(['ec2-user']) {
+//                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
+//                 }
+//             }
+//         }
 
 
 
