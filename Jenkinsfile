@@ -10,15 +10,15 @@ pipeline{
                 }
             }
         }
-        // stage ('deploy docker compose file'){
-        //     steps{
+        stage ('deploy docker compose file'){
+             steps{
 
-        //         //Deploying on remote server
-        //         sshagent(['root']) {
-        //         sh 'ssh -o StrictHostKeyChecking=no root@192.5.101.8 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
-        //         }
-        //     }
-        // }
+                 //Deploying on remote server
+                 sshagent(['root']) {
+                 sh 'ssh -o StrictHostKeyChecking=no root@192.5.101.8 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
+                 }
+             }
+         }
 
         }
         
@@ -27,16 +27,6 @@ pipeline{
 
 
 
-
-//  stage ('deploy docker compose file'){
-//             steps{
-
-//                 //Deploying on remote server
-//                 sshagent(['ec2-user']) {
-//                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.17.35 sudo docker-compose -f /root/git/docker-compose.yaml up -d'
-//                 }
-//             }
-//         }
 
 
 
